@@ -5,8 +5,9 @@
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
-// CODE HERE
-
+function multiply(num1, num2, callback) {
+  callback(num1 * num2);
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -16,17 +17,13 @@
 //   console.log('The answer is ' + answer) //should console.log 12
 // })
 
-
-
 ////////// PROBLEMS 2 - 6 //////////
 
 // The names array will be used in problems 2 - 6.
 
 // Do not edit the code below.
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
+var names = ["Tyler", "Cahlan", "Ryan", "Colt", "Tyler", "Blaine", "Cahlan"];
 // Do not edit the code above.
-
-
 
 ////////// PROBLEM 2 //////////
 
@@ -35,8 +32,9 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// CODE HERE 
-
+function first(arr, callback) {
+  callback(arr[0]);
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -46,8 +44,6 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 //   console.log('The first name in names is ' + firstName)
 // })
 
-
-
 ////////// PROBLEM 3 //////////
 
 /*
@@ -55,8 +51,9 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Then invoke the callback, passing in the last element in the array as the argument.
 */
 
-// CODE HERE
-
+function last(arr, callback) {
+  callback(arr[arr.length - 1]);
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -65,8 +62,6 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 // last(names, lastName => {
 //   console.log('The last name in names is ' + lastName)
 // })
-
-
 
 ////////// PROBLEM 4 //////////
 
@@ -77,8 +72,13 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-// CODE HERE 
-
+function contains(arr, name, callback) {
+  if (arr.includes(name)) {
+    callback(true);
+  } else {
+    callback(false);
+  }
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -92,8 +92,6 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 //   }
 // })
 
-
-
 ////////// PROBLEM 5 //////////
 
 /*
@@ -102,8 +100,17 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Hint: you can use a nested for loop to do this.
 */
 
-// CODE HERE
-
+function uniq(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let h = 0; h < arr.length; h++) {
+      if (arr[i] === arr[h] && i !== h) {
+        arr.splice(h, 1);
+        h -= 1;
+      }
+    }
+  }
+  callback(arr);
+}
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
   The callback function should take in one parameter called uniqArr.
@@ -113,8 +120,6 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE
 
-
-
 ////////// PROBLEM 6 //////////
 
 /* 
@@ -122,8 +127,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
-// CODE HERE 
-
+// CODE HERE
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -133,7 +137,6 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
 
 ////////// PROBLEM 7 //////////
 
@@ -145,35 +148,34 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 // Do not edit the code below.
 var users = [
   {
-    id: '12d',
-    email: 'tyler@gmail.com',
-    name: 'Tyler',
-    address: '167 East 500 North'
+    id: "12d",
+    email: "tyler@gmail.com",
+    name: "Tyler",
+    address: "167 East 500 North",
   },
   {
-    id: '15a',
-    email: 'cahlan@gmail.com',
-    name: 'Cahlan',
-    address: '135 East 320 North'
+    id: "15a",
+    email: "cahlan@gmail.com",
+    name: "Cahlan",
+    address: "135 East 320 North",
   },
   {
-    id: '16t',
-    email: 'ryan@gmail.com',
-    name: 'Ryan',
-    address: '192 East 32 North'
+    id: "16t",
+    email: "ryan@gmail.com",
+    name: "Ryan",
+    address: "192 East 32 North",
   },
-]
+];
 // Do not edit the code above.
 
-// CODE HERE 
-
+// CODE HERE
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
 // getUserById(users, '16t', user => {
-//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address)
 // })
 
 ////////// CHALLENGE //////////
